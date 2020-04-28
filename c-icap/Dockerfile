@@ -1,4 +1,4 @@
-FROM docker.pkg.github.com/hsmtkk/squid_kube/centos-dev:8 as builder
+FROM hsmtkk/squid_kube_centos-dev:8 as builder
 
 WORKDIR /usr/local/src
 
@@ -20,7 +20,7 @@ RUN curl -L -o c_icap_modules-0.5.4.tar.gz "https://ja.osdn.net/frs/g_redir.php?
 
 RUN rm -rf /usr/local/src/*
 
-FROM docker.pkg.github.com/hsmtkk/squid_kube/centos:8
+FROM hsmtkk/squid_kube_centos:8
 
 COPY --from=builder /usr/local /usr/local
 

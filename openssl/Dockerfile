@@ -1,4 +1,4 @@
-FROM docker.pkg.github.com/hsmtkk/squid_kube/centos-dev:8 as builder
+FROM hsmtkk/squid_kube_centos-dev:8 as builder
 
 WORKDIR /usr/local/src
 
@@ -12,7 +12,7 @@ RUN curl -L -O https://www.openssl.org/source/openssl-1.1.1g.tar.gz \
 
 RUN rm -rf /usr/local/src/*
 
-FROM docker.pkg.github.com/hsmtkk/squid_kube/centos:8
+FROM hsmtkk/squid_kube_centos:8
 
 COPY --from=builder /usr/local /usr/local
 
