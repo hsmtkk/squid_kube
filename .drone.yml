@@ -17,6 +17,8 @@ steps:
         - 8
   - name: centos-dev
     image: plugins/docker
+    depends_on:
+      - centos
     settings:
       username: hsmtkk
       password:
@@ -29,6 +31,8 @@ steps:
         - 8
   - name: openssl
     image: plugins/docker
+    depends_on:
+      - centos-dev
     settings:
       username: hsmtkk
       password:
@@ -41,6 +45,8 @@ steps:
         - 1.1.1g
   - name: squid
     image: plugins/docker
+    depends_on:
+      - openssl
     settings:
       username: hsmtkk
       password:
@@ -53,6 +59,8 @@ steps:
         - 4.11
   - name: c-icap
     image: plugins/docker
+    depends_on:
+      - centos-dev
     settings:
       username: hsmtkk
       password:
@@ -65,6 +73,8 @@ steps:
         - 0.5.6
   - name: clamav
     image: plugins/docker
+    depends_on:
+      - openssl
     settings:
       username: hsmtkk
       password:
