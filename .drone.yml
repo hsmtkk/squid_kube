@@ -86,7 +86,7 @@ steps:
         - latest
         - 0.102.2
   - name: dockerhub
-    image: docker:19.03.8
+    image: plugins/docker
     depends_on:
       - c-icap
       - clamav
