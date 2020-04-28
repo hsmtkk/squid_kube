@@ -1,0 +1,17 @@
+kind: pipeline
+type: docker
+name: default
+
+
+steps:
+  - name: centos
+    image: plugins/docker
+    settings:
+      username: hsmtkk
+      password:
+        from_secret: DOCKER_HUB_TOKEN
+      repo: hsmtkk/squid_kube/centos
+      dockerfile: centos/Dockerfile
+      tags:
+        - latest
+        - 8
