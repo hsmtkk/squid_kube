@@ -1,0 +1,11 @@
+version: "3"
+services:
+  c-icap:
+    image: hsmtkk/squid_kube_c-icap:0.5.6
+  clamav:
+    image: hsmtkk/squid_kube_clamav:0.102.2
+  squid:
+    image: hsmtkk/squid_kube_squid:4.11
+    ports:
+      - "8000:8000"
+      

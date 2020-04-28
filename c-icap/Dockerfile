@@ -26,3 +26,4 @@ COPY --from=builder /usr/local /usr/local
 
 RUN c-icap -VV
 
+EXPOSE 1344
