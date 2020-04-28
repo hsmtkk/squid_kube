@@ -17,3 +17,5 @@ FROM docker.pkg.github.com/hsmtkk/squid_kube/centos:8
 COPY --from=builder /usr/local /usr/local
 
 RUN /usr/local/sbin/squid -v
+
+EXPOSE 8000
