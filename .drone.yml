@@ -2,7 +2,6 @@ kind: pipeline
 type: docker
 name: default
 
-
 steps:
   - name: centos
     image: plugins/docker
@@ -16,3 +15,64 @@ steps:
       tags:
         - latest
         - 8
+  - name: centos-dev
+    image: plugins/docker
+    settings:
+      username: hsmtkk
+      password:
+        from_secret: GIT_HUB_TOKEN
+      repo: docker.pkg.github.com/hsmtkk/squid_kube/centos-dev
+      registry: docker.pkg.github.com
+      dockerfile: centos-dev/Dockerfile
+      tags:
+        - latest
+        - 8
+  - name: openssl
+    image: plugins/docker
+    settings:
+      username: hsmtkk
+      password:
+        from_secret: GIT_HUB_TOKEN
+      repo: docker.pkg.github.com/hsmtkk/squid_kube/openssl
+      registry: docker.pkg.github.com
+      dockerfile: openssl/Dockerfile
+      tags:
+        - latest
+        - 1.1.1g
+  - name: squid
+    image: plugins/docker
+    settings:
+      username: hsmtkk
+      password:
+        from_secret: GIT_HUB_TOKEN
+      repo: docker.pkg.github.com/hsmtkk/squid_kube/squid
+      registry: docker.pkg.github.com
+      dockerfile: squid/Dockerfile
+      tags:
+        - latest
+        - 4.11
+  - name: c-icap
+    image: plugins/docker
+    settings:
+      username: hsmtkk
+      password:
+        from_secret: GIT_HUB_TOKEN
+      repo: docker.pkg.github.com/hsmtkk/squid_kube/c-icap
+      registry: docker.pkg.github.com
+      dockerfile: c-icap/Dockerfile
+      tags:
+        - latest
+        - 0.5.6
+  - name: clamav
+    image: plugins/docker
+    settings:
+      username: hsmtkk
+      password:
+        from_secret: GIT_HUB_TOKEN
+      repo: docker.pkg.github.com/hsmtkk/squid_kube/clamav
+      registry: docker.pkg.github.com
+      dockerfile: clamav/Dockerfile
+      tags:
+        - latest
+        - 0.102.2
+
