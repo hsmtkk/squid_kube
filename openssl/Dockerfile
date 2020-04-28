@@ -1,4 +1,4 @@
-FROM hsmtkk/squid_kube_centos-dev:8 as builder
+FROM hsmtkk/squid_kube:centos-dev-8 as builder
 
 WORKDIR /usr/local/src
 
@@ -12,12 +12,9 @@ RUN curl -L -O https://www.openssl.org/source/openssl-1.1.1g.tar.gz \
 
 RUN rm -rf /usr/local/src/*
 
-FROM hsmtkk/squid_kube_centos:8
+FROM hsmtkk/squid_kube:centos-8
 
 COPY --from=builder /usr/local /usr/local
-
-#RUN echo /usr/local/lib64 > /etc/ld.so.conf.d/usr_local_lib64.conf \
-# && ldconfig
 
 RUN openssl version
 

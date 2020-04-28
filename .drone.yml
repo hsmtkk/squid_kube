@@ -8,13 +8,11 @@ steps:
     settings:
       username: hsmtkk
       password:
-        from_secret: GIT_HUB_TOKEN
-      repo: docker.pkg.github.com/hsmtkk/squid_kube/centos
-      registry: docker.pkg.github.com
+        from_secret: DOCKER_HUB_TOKEN
+      repo: hsmtkk/squid_kube
       dockerfile: centos/Dockerfile
       tags:
-        - latest
-        - 8
+        - centos-8
   - name: centos-dev
     image: plugins/docker
     depends_on:
@@ -22,13 +20,11 @@ steps:
     settings:
       username: hsmtkk
       password:
-        from_secret: GIT_HUB_TOKEN
-      repo: docker.pkg.github.com/hsmtkk/squid_kube/centos-dev
-      registry: docker.pkg.github.com
+        from_secret: DOCKER_HUB_TOKEN
+      repo: hsmtkk/squid_kube
       dockerfile: centos-dev/Dockerfile
       tags:
-        - latest
-        - 8
+        - centos-dev-8
   - name: openssl
     image: plugins/docker
     depends_on:
@@ -36,13 +32,11 @@ steps:
     settings:
       username: hsmtkk
       password:
-        from_secret: GIT_HUB_TOKEN
-      repo: docker.pkg.github.com/hsmtkk/squid_kube/openssl
-      registry: docker.pkg.github.com
+        from_secret: DOCKER_HUB_TOKEN
+      repo: hsmtkk/squid_kube
       dockerfile: openssl/Dockerfile
       tags:
-        - latest
-        - 1.1.1g
+        - openssl-1.1.1g
   - name: squid
     image: plugins/docker
     depends_on:
@@ -50,13 +44,11 @@ steps:
     settings:
       username: hsmtkk
       password:
-        from_secret: GIT_HUB_TOKEN
-      repo: docker.pkg.github.com/hsmtkk/squid_kube/squid
-      registry: docker.pkg.github.com
+        from_secret: DOCKER_HUB_TOKEN
+      repo: hsmtkk/squid_kube
       dockerfile: squid/Dockerfile
       tags:
-        - latest
-        - 4.11
+        - squid-4.11
   - name: c-icap
     image: plugins/docker
     depends_on:
@@ -64,13 +56,11 @@ steps:
     settings:
       username: hsmtkk
       password:
-        from_secret: GIT_HUB_TOKEN
-      repo: docker.pkg.github.com/hsmtkk/squid_kube/c-icap
-      registry: docker.pkg.github.com
+        from_secret: DOCKER_HUB_TOKEN
+      repo: hsmtkk/squid_kube
       dockerfile: c-icap/Dockerfile
       tags:
-        - latest
-        - 0.5.6
+        - c-icap-0.5.6
   - name: clamav
     image: plugins/docker
     depends_on:
@@ -78,27 +68,8 @@ steps:
     settings:
       username: hsmtkk
       password:
-        from_secret: GIT_HUB_TOKEN
-      repo: docker.pkg.github.com/hsmtkk/squid_kube/clamav
-      registry: docker.pkg.github.com
+        from_secret: DOCKER_HUB_TOKEN
+      repo: hsmtkk/squid_kube
       dockerfile: clamav/Dockerfile
       tags:
-        - latest
-        - 0.102.2
-  - name: dockerhub
-    image: plugins/docker
-    depends_on:
-      - c-icap
-      - clamav
-      - squid
-    environment:
-      GIT_HUB_TOKEN:
-        from_secret: GIT_HUB_TOKEN
-      DOCKER_HUB_TOKEN:
-        from_secret: DOCKER_HUB_TOKEN
-    commands:
-      - docker login docker.pkg.github.com -u hsmtkk -p $GIT_HUB_TOKEN
-      - docker pull docker.pkg.github.com/hsmtkk/squid_kube/squid:4.11
-      - docker tag docker.pkg.github.com/hsmtkk/squid_kube/squid:4.11 hsmtkk/squid_kube_squid:4.11
-      - docker login hsmtkk/squid_kube -u hsmtkk -p $GIT_HUB_TOKEN
-      - docker push hsmtkk/squid_kube_squid:4.11
+        - clamav-0.102.2

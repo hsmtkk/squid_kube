@@ -1,4 +1,4 @@
-FROM hsmtkk/squid_kube_centos-dev:8 as builder
+FROM hsmtkk/squid_kube:centos-dev-8 as builder
 COPY --from=docker.pkg.github.com/hsmtkk/squid_kube/openssl:1.1.1g /usr/local /usr/local
 
 WORKDIR /usr/local/src
@@ -12,7 +12,7 @@ RUN curl -L -O http://www.squid-cache.org/Versions/v4/squid-4.11.tar.xz \
 
 RUN rm -rf /usr/local/src/*
  
-FROM hsmtkk/squid_kube_centos:8
+FROM hsmtkk/squid_kube:centos-8
 
 COPY --from=builder /usr/local /usr/local
 

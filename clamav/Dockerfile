@@ -1,4 +1,4 @@
-FROM hsmtkk/squid_kube_centos-dev:8 as builder
+FROM hsmtkk/squid_kube:centos-dev-8 as builder
 
 COPY --from=hsmtkk/squid_kube_openssl:1.1.1g /usr/local /usr/local
 
@@ -11,10 +11,8 @@ RUN curl -L -O https://www.clamav.net/downloads/production/clamav-0.102.2.tar.gz
  && make \
  && make install
 
-FROM hsmtkk/squid_kube_centos:8
+FROM hsmtkk/squid_kube:centos-8
 
 COPY --from=builder /usr/local /usr/local
 
 EXPOSE 1344
-
-
