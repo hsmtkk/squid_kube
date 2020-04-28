@@ -8,9 +8,10 @@ steps:
     image: plugins/docker
     settings:
       username: hsmtkk
-      auth:
-        from_secret: DOCKER_HUB_TOKEN
-      repo: hsmtkk/squid_kube/centos
+      password:
+        from_secret: GIT_HUB_TOKEN
+      repo: docker.pkg.github.com/hsmtkk/squid_kube/centos
+      registry: docker.pkg.github.com
       dockerfile: centos/Dockerfile
       tags:
         - latest
