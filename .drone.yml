@@ -1,3 +1,16 @@
 kind: pipeline
 type: docker
 name: default
+
+steps:
+  - name: proxy
+    image: plugins/docker
+    settings:
+      dockerfile: squid/Dockerfile
+      repo: hsmtkk/squid_kube
+      username: hsmtkk
+      password:
+        from_secret: DOCKER_HUB_TOKEN
+      tags:
+        - squid
+
