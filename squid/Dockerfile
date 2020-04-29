@@ -1,8 +1,8 @@
 FROM hsmtkk/squid:4.11
 
-COPY ./squid.conf /usr/local/squid/etc/squid.conf
-COPY ./myCA.pem /usr/local/squid/etc/myCA.pem
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./squid/squid.conf /usr/local/squid/etc/squid.conf
+COPY ./squid/myCA.pem /usr/local/squid/etc/myCA.pem
+COPY ./squid/entrypoint.sh /entrypoint.sh
 
 RUN chown nobody:nogroup /usr/local/squid/var/logs
 

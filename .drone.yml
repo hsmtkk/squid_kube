@@ -5,6 +5,8 @@ name: default
 steps:
   - name: squid
     image: plugins/docker
+    depends_on:
+      - clone
     settings:
       dockerfile: squid/Dockerfile
       repo: hsmtkk/squid_kube
@@ -15,6 +17,8 @@ steps:
         - squid
   - name: c-icap
     image: plugins/docker
+    depends_on:
+      - clone
     settings:
       dockerfile: c-icap/Dockerfile
       repo: hsmtkk/squid_kube
@@ -25,6 +29,8 @@ steps:
         - c-icap
   - name: clamav
     image: plugins/docker
+    depends_on:
+      - clone
     settings:
       dockerfile: clamav/Dockerfile
       repo: hsmtkk/squid_kube
