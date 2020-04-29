@@ -3,11 +3,28 @@ services:
   c-icap:
     image: hsmtkk/c-icap:0.5.6
     volumes:
-      - ./c-icap.conf:/usr/local/etc/c-icap.conf:ro
+      - ./c-icap/entrypoint.sh:/entrypoint.sh:ro
+      - ./c-icap/c-icap.conf:/usr/local/etc/c-icap.conf:ro
+    entrypoint:
+      - /bin/bash
+      - /entrypoint.sh
   clamav:
     image: hsmtkk/clamav:0.102.2
+    volumes:
+      - ./clamav/entrypoint.sh:/entrypoint.sh:ro
+      - ./clamav/freshclam.conf:/usr/local/etc/freshclam.conf:ro
+      - ./clamav/clamd.conf:/usr/local/etc/clamd.conf:ro
+    entrypoint:
+      - /bin/bash
+      - /entrypoint.sh
   squid:
     image: hsmtkk/squid:4.11
+    volumes:
+      - ./squid/entrypoint.sh:/entrypoint.sh:ro
+      - ./squid/squid.conf:/usr/local/etc/squid.conf:ro
+    entrypoint:
+      - /bin/bash
+      - /entrypoint.sh
     ports:
       - "8000:8000"
       

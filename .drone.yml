@@ -3,7 +3,7 @@ type: docker
 name: default
 
 steps:
-  - name: proxy
+  - name: squid
     image: plugins/docker
     settings:
       dockerfile: squid/Dockerfile
@@ -13,4 +13,24 @@ steps:
         from_secret: DOCKER_HUB_TOKEN
       tags:
         - squid
+  - name: c-icap
+    image: plugins/docker
+    settings:
+      dockerfile: c-icap/Dockerfile
+      repo: hsmtkk/squid_kube
+      username: hsmtkk
+      password:
+        from_secret: DOCKER_HUB_TOKEN
+      tags:
+        - c-icap
+  - name: clamav
+    image: plugins/docker
+    settings:
+      dockerfile: clamav/Dockerfile
+      repo: hsmtkk/squid_kube
+      username: hsmtkk
+      password:
+        from_secret: DOCKER_HUB_TOKEN
+      tags:
+        - clamav
 
