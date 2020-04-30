@@ -7,6 +7,8 @@ COPY ./c-icap/virus_scan.conf /usr/local/c-icap/etc/virus_scan.conf
 COPY ./c-icap/clamd_mod.conf /usr/local/c-icap/etc/clamd_mod.conf
 COPY ./c-icap/entrypoint.sh /entrypoint.sh
 
+RUN mkdir /var/run/c-icap
+
 RUN /usr/local/c-icap/bin/c-icap -VV
 
 EXPOSE 1344
