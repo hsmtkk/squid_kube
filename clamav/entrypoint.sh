@@ -1,4 +1,14 @@
 #!/bin/sh
+
+apt -y update
+apt -y install ca-certificates
+
+groupadd clamav
+useradd -g clamav clamav
+
+mkdir /usr/local/clamav/share/clamav
+chown clamav:clamav /usr/local/clamav/share/clamav
+
 mkdir -p /usr/local/clamav/var/log
 tail -F /usr/local/clamav/var/log/clamd.log &
 /usr/local/clamav/bin/freshclam
