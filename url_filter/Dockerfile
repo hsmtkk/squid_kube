@@ -1,9 +1,9 @@
 FROM hsmtkk/c-icap:0.5.6
 
-COPY ./c-icap/c-icap.conf /usr/local/c-icap/etc/c-icap.conf
-COPY ./c-icap/srv_url_check.conf /usr/local/c-icap/etc/srv_url_check.conf
-COPY ./c-icap/black_urls.txt /usr/local/c-icap/etc/black_urls.txt
-COPY ./c-icap/entrypoint.sh /entrypoint.sh
+COPY ./url_filter/c-icap.conf /usr/local/c-icap/etc/c-icap.conf
+COPY ./url_filter/srv_url_check.conf /usr/local/c-icap/etc/srv_url_check.conf
+COPY ./url_filter/black_urls.txt /usr/local/c-icap/etc/black_urls.txt
+COPY ./url_filter/entrypoint.sh /entrypoint.sh
 
 RUN mkdir /var/run/c-icap
 
