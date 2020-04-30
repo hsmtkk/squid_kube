@@ -8,3 +8,6 @@ services:
     image: hsmtkk/squid_kube:url_filter
   virus_scan:
     image: hsmtkk/squid_kube:virus_scan
+  pinger:
+    image: hsmtkk/squid_kube:pinger
+
