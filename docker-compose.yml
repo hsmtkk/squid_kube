@@ -1,11 +1,10 @@
 version: "3"
 services:
-  c-icap:
-    image: hsmtkk/squid_kube_c-icap:0.5.6
-  clamav:
-    image: hsmtkk/squid_kube_clamav:0.102.2
   squid:
-    image: hsmtkk/squid_kube_squid:4.11
+    image: hsmtkk/squid_kube:squid
     ports:
       - "8000:8000"
-      
+  url_filter:
+    image: hsmtkk/squid_kube:url_filter
+  virus_scan:
+    image: hsmtkk/squid_kube:virus_scan

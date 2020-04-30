@@ -1,21 +1,17 @@
-FROM docker.pkg.github.com/hsmtkk/squid_kube/centos-dev:8 as builder
-COPY --from=docker.pkg.github.com/hsmtkk/squid_kube/openssl:1.1.1g /usr/local /usr/local
+FROM hsmtkk/squid:4.11
 
-WORKDIR /usr/local/src
+COPY ./squid/squid.conf /usr/local/squid/etc/squid.conf
+COPY ./squid/myCA.pem /usr/local/squid/etc/myCA.pem
+COPY ./squid/entrypoint.sh /entrypoint.sh
+COPY ./squid/wait-for-it.sh /wait-for-it.sh
 
-RUN curl -L -O http://www.squid-cache.org/Versions/v4/squid-4.11.tar.xz \
- && tar fx squid-4.11.tar.xz \
- && cd squid-4.11 \
- && ./configure --prefix=/usr/local --enable-ssl-crtd --with-openssl \
- && make \
- && make install
+RUN chown nobody:nogroup /usr/local/squid/var/logs
 
-RUN rm -rf /usr/local/src/*
- 
-FROM docker.pkg.github.com/hsmtkk/squid_kube/centos:8
+ENV LD_LIBRARY_PATH=/usr/local/openssl/lib
 
-COPY --from=builder /usr/local /usr/local
-
-RUN /usr/local/sbin/squid -v
+RUN /usr/local/squid/sbin/squid -k parse
 
 EXPOSE 8000
+
+ENTRYPOINT ["/wait-for-it.sh", "--host=virus_scan", "--port=1344", "--timeout=0", "--", "/bin/sh", "/entrypoint.sh"]
+
