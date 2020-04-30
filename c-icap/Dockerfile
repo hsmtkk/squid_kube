@@ -14,5 +14,5 @@ RUN /usr/local/c-icap/bin/c-icap -VV
 
 EXPOSE 1344
 
-ENTRYPOINT ["/wait-for-it.sh", "--host=clamav", "--port=3310", "--", "/bin/sh", "/entrypoint.sh"]
+ENTRYPOINT ["/wait-for-it.sh", "--host=clamav", "--port=3310", "--timeout=0", "--", "/bin/sh", "/entrypoint.sh"]
 
