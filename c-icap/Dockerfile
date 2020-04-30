@@ -6,6 +6,7 @@ COPY ./c-icap/black_urls.txt /usr/local/c-icap/etc/black_urls.txt
 COPY ./c-icap/virus_scan.conf /usr/local/c-icap/etc/virus_scan.conf
 COPY ./c-icap/clamd_mod.conf /usr/local/c-icap/etc/clamd_mod.conf
 COPY ./c-icap/entrypoint.sh /entrypoint.sh
+COPY ./c-icap/wait-for-it.sh /wait-for-it.sh
 
 RUN mkdir /var/run/c-icap
 
@@ -13,5 +14,5 @@ RUN /usr/local/c-icap/bin/c-icap -VV
 
 EXPOSE 1344
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/wait-for-it.sh", "--host=clamav", "--port=3310", "--", "/bin/sh", "/entrypoint.sh"]
 
