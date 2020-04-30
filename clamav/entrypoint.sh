@@ -1,7 +1,6 @@
 #!/bin/sh
 
-apt -y update
-apt -y install ca-certificates
+update-ca-certificates
 
 groupadd clamav
 useradd -g clamav clamav
