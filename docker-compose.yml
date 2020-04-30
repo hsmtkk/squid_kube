@@ -4,7 +4,7 @@ services:
     image: hsmtkk/squid_kube:squid
     ports:
       - "8000:8000"
-  c-icap:
-    image: hsmtkk/squid_kube:c-icap
-  clamav:
-    image: hsmtkk/squid_kube:clamav
+  url_filter:
+    image: hsmtkk/squid_kube:url_filter
+  virus_scan:
+    image: hsmtkk/squid_kube:virus_scan
