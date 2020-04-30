@@ -15,28 +15,28 @@ steps:
         from_secret: DOCKER_HUB_TOKEN
       tags:
         - squid
-  - name: c-icap
+  - name: url_filter
     image: plugins/docker
     depends_on:
       - clone
     settings:
-      dockerfile: c-icap/Dockerfile
+      dockerfile: url_filter/Dockerfile
       repo: hsmtkk/squid_kube
       username: hsmtkk
       password:
         from_secret: DOCKER_HUB_TOKEN
       tags:
-        - c-icap
-  - name: clamav
+        - url_filter
+  - name: virus_scan
     image: plugins/docker
     depends_on:
       - clone
     settings:
-      dockerfile: clamav/Dockerfile
+      dockerfile: virus_scan/Dockerfile
       repo: hsmtkk/squid_kube
       username: hsmtkk
       password:
         from_secret: DOCKER_HUB_TOKEN
       tags:
-        - clamav
+        - virus_scan
 
