@@ -15,30 +15,30 @@ steps:
         from_secret: DOCKER_HUB_TOKEN
       tags:
         - squid
-  - name: url_filter
+  - name: urlfilter
     image: plugins/docker
     depends_on:
       - clone
     settings:
-      dockerfile: url_filter/Dockerfile
+      dockerfile: urlfilter/Dockerfile
       repo: hsmtkk/squid_kube
       username: hsmtkk
       password:
         from_secret: DOCKER_HUB_TOKEN
       tags:
-        - url_filter
-  - name: virus_scan
+        - urlfilter
+  - name: virusscan
     image: plugins/docker
     depends_on:
       - clone
     settings:
-      dockerfile: virus_scan/Dockerfile
+      dockerfile: virusscan/Dockerfile
       repo: hsmtkk/squid_kube
       username: hsmtkk
       password:
         from_secret: DOCKER_HUB_TOKEN
       tags:
-        - virus_scan
+        - virusscan
   - name: pinger
     image: plugins/docker
     depends_on:
