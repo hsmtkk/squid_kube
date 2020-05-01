@@ -13,5 +13,4 @@ RUN /usr/local/squid/sbin/squid -k parse
 
 EXPOSE 8000
 
-ENTRYPOINT ["/wait-for-it.sh", "--host=virus_scan", "--port=1344", "--timeout=0", "--", "/bin/sh", "/entrypoint.sh"]
-
+ENTRYPOINT ["/entrypoint.sh"]

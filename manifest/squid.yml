@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: squid
+  labels:
+    app: squid
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: squid
+  template:
+    metadata:
+      labels:
+        app: squid
+    spec:
+      containers:
+      - name: squid
+        image: hsmtkk/squid_kube:squid
+        ports:
+          - containerPort: 8000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: squid
+spec:
+  type: LoadBalancer
+  selector:
+    app: squid
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
