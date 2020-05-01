@@ -4,10 +4,10 @@ services:
     image: hsmtkk/squid_kube:squid
     ports:
       - "8000:8000"
-  url_filter:
-    image: hsmtkk/squid_kube:url_filter
-  virus_scan:
-    image: hsmtkk/squid_kube:virus_scan
+  urlfilter:
+    image: hsmtkk/squid_kube:urlfilter
+  virusscan:
+    image: hsmtkk/squid_kube:virusscan
   pinger:
     image: hsmtkk/squid_kube:pinger
 

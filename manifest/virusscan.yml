@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: url_filter
+  name: virusscan
   labels:
-    app: url_filter
+    app: virusscan
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: url_filter
+      app: virusscan
   template:
     metadata:
       labels:
-        app: url_filter
+        app: virusscan
     spec:
       containers:
-      - name: url_filter
-        image: hsmtkk/squid_kube:url_filter
+      - name: virusscan
+        image: hsmtkk/squid_kube:virusscan
         ports:
           - containerPort: 1344
 
@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: url_filter
+  name: virusscan
 spec:
   type: NodePort
   selector:
-    app: url_filter
+    app: virusscan
   ports:
   - protocol: TCP
     port: 1344
