@@ -17,6 +17,7 @@ spec:
       containers:
       - name: urlfilter
         image: hsmtkk/squid_kube:urlfilter
+        imagePullPolicy: Always
         ports:
           - containerPort: 1344
 

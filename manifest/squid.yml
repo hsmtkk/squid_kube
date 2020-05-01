@@ -17,6 +17,7 @@ spec:
       containers:
       - name: squid
         image: hsmtkk/squid_kube:squid
+        imagePullPolicy: Always
         ports:
           - containerPort: 8000
 

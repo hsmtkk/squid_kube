@@ -17,6 +17,7 @@ spec:
       containers:
       - name: virusscan
         image: hsmtkk/squid_kube:virusscan
+        imagePullPolicy: Always
         ports:
           - containerPort: 1344
 
